@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+
+<h1>Search meeps</h1>
+<br/>
+
+    <form method="POST" >
+        {% csrf_token %}
+        <input type="input" class="form-control"  aria-describedby="emailHelp" name="search">
+    </br>
+        <button type="submit" class="btn btn-primary">Search meep</button>
+    </form>
+    
+</br></br></br>
+
+{% if search %}
+<h3>You Search For: {{search}} </h3>
+
+{% for meep in searched  %}
+
+
+<div class="alert alert-light" role="alert">
+    <div class="container">
+        <div class="row">
+            <div class="col-1">
+                {% if meep.user.profile.profile_image  %}
+        
+                <img src="{{meep.user.profile.profile_image.url}}" width=100 height=100 class="rounded-circle" alt="{{profile.user.username}} ">
+                    {% else %}
+                <img src="{% static 'images/twitter-avi-gender-balanced-figure.png' %}" width=100 height=100  class="rounded-circle" alt="Profile Picture">
+                {% endif %}
+            </div>
+            <div class="col-11">
+            {{ meep.body }}
+            </br>
+            {% if meep.video %}
+            <video width="500" height="340" controls>
+                <source src="{{ meep.video.url }}" >
+                Your browser does not support the video tag.
+            </video>
+     
+        {% endif %}
+        </br>
+
+    <small class="text-muted">
+        {{meep.created_at}} By 
+        @{{meep.user.username}}
+        {{meep.number_of_likes}}
+        
+        {% if user in meep.likes.all %}
+        <a href="{% url 'meep_like' meep.id %}"><i class="fa-solid fa-heart" style="color:red"></i>
+        </a>
+        {% else %}
+<a href="{% url 'meep_like' meep.id %}">
+<i class="fa fa-heart-o" style="color:red"></i>
+</a>
+{% endif %}
+        &nbsp;
+        <a href="{% url 'meep_show' meep.id%}"><i class=" fa-solid fa-share" style="color:grey"></i></a>
+</small>
+</div>
+</div>
+</div>
+</div>
+
+
+{% endfor %}
+
+{% endif %}
+{% endblock  %}
