@@ -49,7 +49,7 @@
             
                                     <a href="{% url 'meep_like' meep.id %}"><i class="fa-solid fa-heart" style="color:red"></i></a>
                                     {% else %}
-                                    <a href="{% url 'meep_like' meep.id %}"><i class="fa fa-heart-o" style="color:red"></i></a>                                 </i></a>
+                                    <a href="{% url 'meep_like' meep.id %}"><i class="fa fa-heart-o" style="color:red"></i></a>
                                     {% endif %}
                                     <a href="{% url 'meep_show' meep.id%}"><i class=" fa-solid fa-share" style="color:grey"></i></a>
                                 {% if request.user.username == profile.user.username %}
