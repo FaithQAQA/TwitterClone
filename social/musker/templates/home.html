@@ -31,7 +31,7 @@
     
     {% for meep in meeps  %}
     
-    <div class="alert alert-light" role="alert" onclick="redirectToMeepDetail({{ meep.id }})">
+    <div class="alert alert-light" role="alert" onclick="redirectToMeepDetail('{{ meep.id }})'>
         <div class="container">
             <div class="row">
                 <div class="col-1">
@@ -62,15 +62,37 @@
             
             {% if user in meep.likes.all %}
             <a href="{% url 'meep_like' meep.id %}"><i class="fa-solid fa-heart" style="color:red"></i>
+        
             </a>
             {% else %}
     <a href="{% url 'meep_like' meep.id %}">
     <i class="fa fa-heart-o" style="color:red"></i>
     </a>
     {% endif %}
+</br>
+<small class="text-muted">
+    {{meep.created_at}} By 
+    @{{meep.user.username}}
+    - {{meep.number_of_likes}} Likes - 
+    
+    {% if user in meep.likes.all %}
+    
+    <a href="{% url 'meep_like' meep.id %}"><i class="fa-solid fa-heart" style="color:red"></i>
+    </a>
+    {% else %}
+    <a href="{% url 'meep_like' meep.id %}">
+<i class="fa fa-heart-o" style="color:red"></i>
+    </a>
+    {% endif %}
+</small>
             &nbsp;
             <a href="{% url 'meep_show' meep.id%}"><i class=" fa-solid fa-share" style="color:grey"></i></a>
     </small>
+    <!-- ... (existing content) ... -->
+
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4m4BHvDfzIgj5LbQLuFiIp?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<!-- ... (existing content) ... -->
+
     </div><br/><br/>
     </div>
     </div>
