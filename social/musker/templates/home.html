@@ -37,9 +37,9 @@
                 <div class="col-1">
                     {% if meep.user.profile.profile_image  %}
             
-                    <img src="{{meep.user.profile.profile_image.url}}" width=100 height=100 class="rounded-circle" alt="{{profile.user.username}} ">
+                    <img src="{{meep.user.profile.profile_image.url}}" width=56 height=56 class="rounded-circle avatar" alt="{{meep.user.username}} ">
                         {% else %}
-                    <img src="{% static 'images/twitter-avi-gender-balanced-figure.png' %}" width=100 height=100  class="rounded-circle" alt="Profile Picture">
+                    <img src="{% static 'images/twitter-avi-gender-balanced-figure.png' %}" width=56 height=56  class="rounded-circle avatar" alt="Profile Picture">
                     {% endif %}
                 </div>
                 <div class="col-11">

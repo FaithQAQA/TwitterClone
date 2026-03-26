@@ -118,8 +118,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'social', 'musker', 'static'),
-    # Add other directories if needed
+    os.path.join(BASE_DIR, 'musker', 'static'),
 ]
 
 MEDIA_URL = 'media/'

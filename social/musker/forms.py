@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 #profil extra form
 
 class ProfilePicForm(forms.ModelForm):
-    profile_image= forms.ImageField(label="Profile Pictrue")
+    profile_image= forms.ImageField(label="Profile Picture")
     profile_bio = forms.CharField(label="Profile Bio", widget=forms.Textarea(attrs={'class':'form-control', 'placeholder':'Bio'}))
     homepage_link= forms.CharField(label="Website Link", widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':' Website Link Bio'}))
     facebook_link = forms.CharField(label="FaceBook Link", widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':' Facebook Link'}))
@@ -31,15 +31,15 @@ class MeepForm(forms.ModelForm):
 
     video = forms.FileField(
         required=False,
-        label="",
+        label="Upload Video (Optional)",
         widget=forms.ClearableFileInput(
             attrs={
                 "multiple": False,
-                "class": "form-control-file",  # Bootstrap class for file input
-                 "style": "display: none;",  # Hide the default file input
-
+                "class": "form-control",
+                "accept": "video/*",
             }
-        )
+        ),
+        help_text="Max file size: 100MB. Supported formats: MP4, WebM, Ogg"
     )
 
     class Meta:
